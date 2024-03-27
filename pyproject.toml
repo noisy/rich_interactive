@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "rich-interactive"
+name = "rich_interactive"
 version = "0.2.0"
 description = "Extends the Rich library with interactive layouts and tables, allowing seamless navigation and interaction via keyboard shortcuts"
 authors = ["Krzysztof Szumny <noisy.pl@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{ include = "rich-interactive" }]
+packages = [{ include = "rich_interactive" }]
 
 [tool.poetry.dependencies]
 python = "^3.11"
