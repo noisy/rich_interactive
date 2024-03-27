@@ -1,0 +1,31 @@
+{
+    "editor.formatOnSave": true,
+    "cSpell.words": [
+        "docopt",
+        "dotenv",
+        "pynput",
+        "renderable"
+    ],
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+        }
+    },
+    "ruff.lint.args": [
+        "--unfixable=F401"
+    ],
+    "python.testing.pytestArgs": [
+        "richer"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.pytest_cache": true,
+    },
+}

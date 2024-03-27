@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "ms-python.python",
+        "ms-python.debugpy",
+        "streetsidesoftware.code-spell-checker",
+        "tamasfe.even-better-toml",
+        "charliermarsh.ruff",
+        "iliazeus.vscode-ansi"
+    ]
+}
