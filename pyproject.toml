@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rich_interactive"
-version = "0.2.0"
+version = "0.3.0"
 description = "Extends the Rich library with interactive layouts and tables, allowing seamless navigation and interaction via keyboard shortcuts"
 authors = ["Krzysztof Szumny <noisy.pl@gmail.com>"]
 license = "MIT"

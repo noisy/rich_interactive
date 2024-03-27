@@ -2,7 +2,7 @@ from rich.console import Console
 from rich.style import Style, StyleType
 from rich.table import Table
 
-from .interactive import Interactive
+from rich_interactive.interactive import Interactive
 
 
 class InteractiveTable(Interactive, Table):
