@@ -27,5 +27,6 @@
     "files.exclude": {
         "**/__pycache__": true,
         "**/.pytest_cache": true,
+        "dist/**": true,
     },
 }
