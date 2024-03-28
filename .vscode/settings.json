@@ -29,5 +29,6 @@
         "**/__pycache__": true,
         "**/.pytest_cache": true,
         "dist/**": true,
+        ".ruff_cache/**": true,
     },
 }
