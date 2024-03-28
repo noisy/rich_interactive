@@ -18,7 +18,7 @@
         "--unfixable=F401"
     ],
     "python.testing.pytestArgs": [
-        "richer"
+        "tests"
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
