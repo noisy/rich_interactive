@@ -203,3 +203,24 @@ def test_interactive_table_first_selected_row_moved_up_when_rotate_selection_tru
 
     output = render_to_text(table)
     diff_output(output, expected_output)
+
+
+def test_interactive_table_remove_selection(render_to_text):
+    table = InteractiveTable(title="Interactive Table", selected_row=1)
+    add_columns_and_rows(table)
+
+    table.remove_selection()
+
+    expected_output = _("""
+    [3m Interactive Table  [0m
+    ┏━━━┳━━━━━━━━━━━━━━┓
+    ┃[1m [0m[1m#[0m[1m [0m┃[1m [0m[1mColumn 1    [0m[1m [0m┃
+    ┡━━━╇━━━━━━━━━━━━━━┩
+    │ 1 │ Row 1        │
+    │ 2 │ Row 2        │
+    │ 3 │ Row 3        │
+    └───┴──────────────┘
+    """)
+
+    output = render_to_text(table)
+    diff_output(output, expected_output)

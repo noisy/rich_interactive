@@ -46,3 +46,6 @@ class InteractiveTable(Interactive, Table):
 
         if self.selected_row == 0 and self.rotate_selection:
             self.selected_row = len(self.rows) - 1
+
+    def remove_selection(self):
+        self.selected_row = None
