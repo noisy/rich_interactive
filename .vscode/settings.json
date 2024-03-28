@@ -4,6 +4,7 @@
         "docopt",
         "dotenv",
         "pynput",
+        "pytest",
         "renderable"
     ],
     "[python]": {
