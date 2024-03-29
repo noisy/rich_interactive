@@ -82,3 +82,13 @@ print(layout)
 
 <!-- ![](./docs/images/interactive_layout.png) -->
 ![](https://raw.githubusercontent.com/noisy/rich_interactive/main/docs/images/interactive_layout.png)
+
+
+# Future plans
+
+My personal goal, is to prepare a good quality package, which would enable easy navigation with keyboard, like this:
+
+<!-- ![](./docs/images/future_plans_live_demo_poc.gif) -->
+![](https://raw.githubusercontent.com/noisy/rich_interactive/main/docs/images/future_plans_live_demo_poc.gif)
+
+(Disclaimer: functionality shown in this gif is still in PoC stage, and it is not production ready yet)
