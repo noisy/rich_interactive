@@ -14,6 +14,37 @@ or using poetry
 ```bash
 poetry add rich_interactive
 ```
+## Interactive Tables
+
+You can create interactive tables that can be easily navigated, and you can switch the selection to any of the rows.
+
+```python
+from rich import print
+from rich.style import Style
+from rich_interactive.interactive_table import InteractiveTable as Table
+
+table = Table(
+    selected_row=2,
+    rotate_selection=True,
+    selected_row_style=Style(bgcolor="red"),
+)
+table.add_column("#")
+table.add_column("Column 1")
+
+for row in range(3):
+    table.add_row(f"{row}", f"Row {row}")
+
+print("Initial table")
+print(table)
+
+table.move_selection_down()
+
+print("Table after moving selection down")
+print(table)
+```
+
+<!-- ![](./docs/images/interactive_table.png) -->
+![](https://raw.githubusercontent.com/noisy/rich_interactive/main/docs/images/interactive_table.png)
 
 ## Interactive Layouts
 

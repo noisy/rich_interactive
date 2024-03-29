@@ -114,7 +114,6 @@ class InteractiveLayout(Interactive, Layout):
 if __name__ == "__main__":
     from rich.console import Console
     from rich.text import Text
-    from rich.syntax import Syntax
     from rich_interactive.interactive_panel import InteractivePanel as Panel
     from rich_interactive.interactive_layout import InteractiveLayout as Layout
 
@@ -131,35 +130,6 @@ if __name__ == "__main__":
     for child in layout.children:
         child.update(Panel(Text(child.name, style="yellow")))
 
-    code = """
-    from rich.console import Console
-    from rich.text import Text
-
-    from rich_interactive.interactive_panel import InteractivePanel as Panel
-    from rich_interactive.interactive_layout import InteractiveLayout as Layout
-
-    console = Console(width=60, height=15)
-
-    layout = Layout()
-    layout.split(
-        Layout(name="header", size=5),
-        Layout(name="main", size=5),
-        Layout(name="footer", size=5),
-    )
-
-    for child in layout.children:
-        child.update(Panel(Text(child.name, style="yellow")))
-
-    print("Initial layout:")
-    print(layout)
-
-    layout.switch_selection()
-
-    print("After switching selection:")
-    print(layout)
-    """
-
-    print(Syntax(code, "python", dedent=True))
     print("Initial layout:")
     print(layout)
     print()
