@@ -1,5 +1,5 @@
 # Rich Interactive
-Extends the Rich library with interactive layouts and tables, allowing seamless navigation and interaction via keyboard shortcuts
+Extends the [Rich](https://github.com/Textualize/rich) python library with interactive layouts and tables, allowing seamless navigation and interaction via keyboard shortcuts
 
 
 ## Interactive Layouts
