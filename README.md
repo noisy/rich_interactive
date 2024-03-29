@@ -1,6 +1,19 @@
+[![PyPI version](https://badge.fury.io/py/rich_interactive.svg)](https://badge.fury.io/py/rich_interactive)
+
 # Rich Interactive
 Extends the [Rich](https://github.com/Textualize/rich) python library with interactive layouts and tables, allowing seamless navigation and interaction via keyboard shortcuts
 
+## Installation
+
+```bash
+pip install rich_interactive
+```
+
+or using poetry
+
+```bash
+poetry add rich_interactive
+```
 
 ## Interactive Layouts
 
