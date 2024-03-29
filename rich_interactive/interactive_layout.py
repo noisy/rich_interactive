@@ -83,3 +83,55 @@ class InteractiveLayout(Interactive, Layout):
             self._selection_index -= 1
         else:
             self._selection_index = len(self.names) - 1
+
+
+if __name__ == "__main__":
+    from rich.console import Console
+    from rich.text import Text
+    from rich.syntax import Syntax
+    from rich_interactive.interactive_panel import InteractivePanel as Panel
+
+    console = Console(width=60, height=15)
+    print = console.print
+
+    layout = InteractiveLayout()
+    layout.split(
+        InteractiveLayout(name="header", size=5),
+        InteractiveLayout(name="main", size=5),
+        InteractiveLayout(name="footer", size=5),
+    )
+    layout.traverse()
+    for child in layout.children:
+        child.update(Panel(Text(child.name, style="yellow")))
+
+    code = """
+    console = Console(width=60, height=15)
+
+    layout = InteractiveLayout()
+    layout.split(
+        InteractiveLayout(name="header", size=5),
+        InteractiveLayout(name="main", size=5),
+        InteractiveLayout(name="footer", size=5),
+    )
+    layout.traverse()
+    for child in layout.children:
+        child.update(Panel(Text(child.name, style="yellow")))
+
+    print("Initial layout:")
+    print(layout)
+
+    layout.switch_selection()
+
+    print("After switching selection:")
+    print(layout)
+    """
+
+    print(Syntax(code, "python", dedent=True))
+    print("Initial layout:")
+    print(layout)
+    print()
+
+    layout.switch_selection()
+
+    print("After switching selection:")
+    print(layout)
