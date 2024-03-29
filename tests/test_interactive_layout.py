@@ -13,7 +13,7 @@ def get_layout():
         InteractiveLayout(name="main", size=3),
         InteractiveLayout(name="footer", size=3),
     )
-    layout.traverse()
+
     for child in layout.children:
         child.update(Panel(Text(child.name, style="yellow")))
     return layout

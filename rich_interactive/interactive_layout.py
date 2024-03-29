@@ -22,19 +22,45 @@ class InteractiveLayout(Interactive, Layout):
         self._selected_box = selected_box
         self._selected_border_style = selected_border_style
 
-    def traverse(self) -> list["InteractiveLayout"]:
-        result = []
+    def split(self, *args, **kwargs):
+        super().split(*args, **kwargs)
+        self._refresh_parent_tree_structure()
 
+    def add_split(self, *args, **kwargs):
+        super().add_split(*args, **kwargs)
+        self._refresh_parent_tree_structure()
+
+    def split_row(self, *args, **kwargs):
+        super().split_row(*args, **kwargs)
+        self._refresh_parent_tree_structure()
+
+    def split_column(self, *args, **kwargs):
+        super().split_column(*args, **kwargs)
+        self._refresh_parent_tree_structure()
+
+    def unsplit(self, *args, **kwargs):
+        super().unsplit(*args, **kwargs)
+        self._refresh_parent_tree_structure()
+
+    def _refresh_parent_tree_structure(self):
         for child in self.children:
             child._parent = self
 
             if isinstance(child, InteractiveLayout):
-                result.extend(child.traverse())
+                child._refresh_parent_tree_structure()
+
+    @property
+    def descendants(self) -> list["InteractiveLayout"]:
+        result = []
+
+        for child in self.children:
+            if isinstance(child, InteractiveLayout):
+                result.extend(child.descendants)
             else:
                 result.append(child.name)
 
         if not self.children:
-            result.append(self.name)
+            result.append(self)
 
         return result
 
@@ -44,7 +70,7 @@ class InteractiveLayout(Interactive, Layout):
 
     @property
     def names(self) -> list[str]:
-        return self.traverse()
+        return [d.name for d in self.descendants]
 
     @property
     def is_selected(self) -> bool:
@@ -90,30 +116,37 @@ if __name__ == "__main__":
     from rich.text import Text
     from rich.syntax import Syntax
     from rich_interactive.interactive_panel import InteractivePanel as Panel
+    from rich_interactive.interactive_layout import InteractiveLayout as Layout
 
     console = Console(width=60, height=15)
     print = console.print
 
-    layout = InteractiveLayout()
+    layout = Layout()
     layout.split(
-        InteractiveLayout(name="header", size=5),
-        InteractiveLayout(name="main", size=5),
-        InteractiveLayout(name="footer", size=5),
+        Layout(name="header", size=5),
+        Layout(name="main", size=5),
+        Layout(name="footer", size=5),
     )
-    layout.traverse()
+
     for child in layout.children:
         child.update(Panel(Text(child.name, style="yellow")))
 
     code = """
+    from rich.console import Console
+    from rich.text import Text
+
+    from rich_interactive.interactive_panel import InteractivePanel as Panel
+    from rich_interactive.interactive_layout import InteractiveLayout as Layout
+
     console = Console(width=60, height=15)
 
-    layout = InteractiveLayout()
+    layout = Layout()
     layout.split(
-        InteractiveLayout(name="header", size=5),
-        InteractiveLayout(name="main", size=5),
-        InteractiveLayout(name="footer", size=5),
+        Layout(name="header", size=5),
+        Layout(name="main", size=5),
+        Layout(name="footer", size=5),
     )
-    layout.traverse()
+
     for child in layout.children:
         child.update(Panel(Text(child.name, style="yellow")))
 
