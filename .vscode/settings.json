@@ -1,5 +1,12 @@
 {
-    "editor.formatOnSave": true,
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true
+    },
     "cSpell.words": [
         "docopt",
         "dotenv",
@@ -7,28 +14,21 @@
         "pytest",
         "renderable"
     ],
-    "[python]": {
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "charliermarsh.ruff",
-        "editor.codeActionsOnSave": {
-            "source.fixAll": "explicit",
-            "source.organizeImports": "explicit"
-        }
+    "editor.formatOnSave": true,
+    "files.exclude": {
+        "**/.pytest_cache": true,
+        "**/__pycache__": true,
+        ".ruff_cache/**": true,
+        "dist/**": true
     },
-    "ruff.lint.args": [
-        "--unfixable=F401"
-    ],
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
     "python.testing.pytestArgs": [
         "tests"
     ],
-    "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true,
-    "files.exclude": {
-        "**/__pycache__": true,
-        "**/.pytest_cache": true,
-        "dist/**": true,
-        ".ruff_cache/**": true,
-    },
+    "python.testing.unittestEnabled": false,
+    "ruff.lint.args": [
+        "--unfixable=F401"
+    ]
 }
