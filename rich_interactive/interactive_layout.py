@@ -6,15 +6,18 @@ from rich_interactive.interactive import Interactive
 
 
 class InteractiveLayout(Interactive, Layout):
-    _selection_index: int = 0
+    _selection_index: int | None = 0
     _parent: "InteractiveLayout" = None
     _selected_box: box.Box
     _selected_border_style: str
 
+    DEFAULT_SELECTED_BORDER_STYLE = "bold bright_white"
+    DEFAULT_SELECTED_BOX = box.HEAVY_EDGE
+
     def __init__(
         self,
-        selected_box=box.HEAVY_EDGE,
-        selected_border_style="bold bright_white",
+        selected_box=None,
+        selected_border_style=None,
         *args,
         **kwargs,
     ):
@@ -84,12 +87,37 @@ class InteractiveLayout(Interactive, Layout):
         result.layout = self
 
         if self.is_selected and isinstance(result, Interactive):
-            result.box = self._selected_box
-            result.border_style = self._selected_border_style
+            result.original_box = result.box
+            result.box = self.get_selected_box()
+
+            result.original_border_style = result.border_style
+            result.border_style = self.get_selected_border_style()
         else:
-            result.box = box.SQUARE
+            if hasattr(result, "original_border_style"):
+                result.border_style = result.original_border_style
+
+            if hasattr(result, "original_box"):
+                result.box = result.original_box
 
         return result
+
+    def get_selected_border_style(self):
+        if self._selected_border_style:
+            return self._selected_border_style
+        else:
+            if self._parent:
+                return self._parent.get_selected_border_style()
+            else:
+                return self.DEFAULT_SELECTED_BORDER_STYLE
+
+    def get_selected_box(self):
+        if self._selected_box:
+            return self._selected_box
+        else:
+            if self._parent:
+                return self._parent.get_selected_box()
+            else:
+                return self.DEFAULT_SELECTED_BOX
 
     @property
     def selected_layout_index(self):
@@ -99,16 +127,31 @@ class InteractiveLayout(Interactive, Layout):
         return self.top_layout[self.names[self.selected_layout_index]]
 
     def switch_selection(self):
-        if self._selection_index < len(self.names) - 1:
-            self._selection_index += 1
+        if self._selection_index is None:
+            if len(self.names) > 0:
+                self._selection_index = 0
+            else:
+                return
         else:
-            self._selection_index = 0
+            if self._selection_index < len(self.names) - 1:
+                self._selection_index += 1
+            else:
+                self._selection_index = 0
 
     def switch_selection_back(self):
-        if self._selection_index > 0:
-            self._selection_index -= 1
+        if self._selection_index is None:
+            if len(self.names) > 0:
+                self._selection_index = len(self.names) - 1
+            else:
+                return
         else:
-            self._selection_index = len(self.names) - 1
+            if self._selection_index > 0:
+                self._selection_index -= 1
+            else:
+                self._selection_index = len(self.names) - 1
+
+    def remove_selection(self):
+        self._selection_index = None
 
 
 if __name__ == "__main__":
