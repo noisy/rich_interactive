@@ -11,8 +11,8 @@ class InteractiveLayout(Interactive, Layout):
     _selected_box: box.Box
     _selected_border_style: str
 
-    DEFAULT_SELECTED_BORDER_STYLE = "bold bright_white"
-    DEFAULT_SELECTED_BOX = box.HEAVY_EDGE
+    DEFAULT_SELECTED_BOX: box.Box = box.HEAVY_EDGE
+    DEFAULT_SELECTED_BORDER_STYLE: str = "bold bright_white"
 
     def __init__(
         self,
@@ -27,23 +27,23 @@ class InteractiveLayout(Interactive, Layout):
 
     def split(self, *args, **kwargs):
         super().split(*args, **kwargs)
-        self._refresh_parent_tree_structure()
+        self.top_layout._refresh_parent_tree_structure()
 
     def add_split(self, *args, **kwargs):
         super().add_split(*args, **kwargs)
-        self._refresh_parent_tree_structure()
+        self.top_layout._refresh_parent_tree_structure()
 
     def split_row(self, *args, **kwargs):
         super().split_row(*args, **kwargs)
-        self._refresh_parent_tree_structure()
+        self.top_layout._refresh_parent_tree_structure()
 
     def split_column(self, *args, **kwargs):
         super().split_column(*args, **kwargs)
-        self._refresh_parent_tree_structure()
+        self.top_layout._refresh_parent_tree_structure()
 
     def unsplit(self, *args, **kwargs):
         super().unsplit(*args, **kwargs)
-        self._refresh_parent_tree_structure()
+        self.top_layout._refresh_parent_tree_structure()
 
     def _refresh_parent_tree_structure(self):
         for child in self.children:
@@ -87,11 +87,14 @@ class InteractiveLayout(Interactive, Layout):
         result.layout = self
 
         if self.is_selected and isinstance(result, Interactive):
-            result.original_box = result.box
-            result.box = self.get_selected_box()
+            if not hasattr(result, "original_box") and not hasattr(
+                result, "original_border_style"
+            ):
+                result.original_box = result.box
+                result.box = self.get_selected_box()
 
-            result.original_border_style = result.border_style
-            result.border_style = self.get_selected_border_style()
+                result.original_border_style = result.border_style
+                result.border_style = self.get_selected_border_style()
         else:
             if hasattr(result, "original_border_style"):
                 result.border_style = result.original_border_style
