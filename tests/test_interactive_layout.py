@@ -27,7 +27,7 @@ def update_content(layout):
     return layout
 
 
-def test_interactive_layout__default_layout_selection(render_to_text):
+def test_default_layout_selection(render_to_text):
     layout = get_layout()
     update_content(layout)
 
@@ -47,7 +47,7 @@ def test_interactive_layout__default_layout_selection(render_to_text):
     diff_output(output, expected_output)
 
 
-def test_interactive_layout__restores_box_and_box_style_to_original_after_selection_is_removed(
+def test_restores_box_and_box_style_to_original_after_selection_is_removed(
     render_to_text,
 ):
     layout = get_layout(selected_border_style="bold red", selected_box=box.ASCII2)

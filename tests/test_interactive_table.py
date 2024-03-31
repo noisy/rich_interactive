@@ -10,7 +10,7 @@ def add_columns_and_rows(table, rows=3):
         table.add_row(str(i), f"Row {i}")
 
 
-def test_interactive_table_default_row_selection(render_to_text):
+def test_default_row_selection(render_to_text):
     table = InteractiveTable(title="Interactive Table")
     add_columns_and_rows(table)
 
@@ -29,7 +29,7 @@ def test_interactive_table_default_row_selection(render_to_text):
     diff_output(output, expected_output)
 
 
-def test_interactive_table_no_selected_row(render_to_text):
+def test_no_selected_row(render_to_text):
     table = InteractiveTable(title="Interactive Table", selected_row=None)
     add_columns_and_rows(table)
 
@@ -48,7 +48,7 @@ def test_interactive_table_no_selected_row(render_to_text):
     diff_output(output, expected_output)
 
 
-def test_interactive_table_selected_row(render_to_text):
+def test_selected_row(render_to_text):
     table = InteractiveTable(title="Interactive Table", selected_row=1)
     add_columns_and_rows(table)
 
@@ -67,7 +67,7 @@ def test_interactive_table_selected_row(render_to_text):
     diff_output(output, expected_output)
 
 
-def test_interactive_table_selected_row_moved_down(render_to_text):
+def test_selected_row_moved_down(render_to_text):
     table = InteractiveTable(title="Interactive Table", selected_row=1)
     add_columns_and_rows(table)
 
@@ -88,7 +88,7 @@ def test_interactive_table_selected_row_moved_down(render_to_text):
     diff_output(output, expected_output)
 
 
-def test_interactive_table_selected_row_moved_up(render_to_text):
+def test_selected_row_moved_up(render_to_text):
     table = InteractiveTable(title="Interactive Table", selected_row=2)
     add_columns_and_rows(table)
 
@@ -109,7 +109,7 @@ def test_interactive_table_selected_row_moved_up(render_to_text):
     diff_output(output, expected_output)
 
 
-def test_interactive_table_last_selected_row_moved_down_does_not_move_selection(
+def test_last_selected_row_moved_down_does_not_move_selection(
     render_to_text,
 ):
     table = InteractiveTable(title="Interactive Table", selected_row=2)
@@ -132,7 +132,7 @@ def test_interactive_table_last_selected_row_moved_down_does_not_move_selection(
     diff_output(output, expected_output)
 
 
-def test_interactive_table_first_selected_row_moved_up_does_not_move_selection(
+def test_first_selected_row_moved_up_does_not_move_selection(
     render_to_text,
 ):
     table = InteractiveTable(title="Interactive Table", selected_row=0)
@@ -155,7 +155,7 @@ def test_interactive_table_first_selected_row_moved_up_does_not_move_selection(
     diff_output(output, expected_output)
 
 
-def test_interactive_table_last_selected_row_moved_down_when_rotate_selection_true_does_move_selection_to_first_row(
+def test_last_selected_row_moved_down_when_rotate_selection_true_does_move_selection_to_first_row(
     render_to_text,
 ):
     table = InteractiveTable(
@@ -180,7 +180,7 @@ def test_interactive_table_last_selected_row_moved_down_when_rotate_selection_tr
     diff_output(output, expected_output)
 
 
-def test_interactive_table_first_selected_row_moved_up_when_rotate_selection_true_does_move_selection_to_last_row(
+def test_first_selected_row_moved_up_when_rotate_selection_true_does_move_selection_to_last_row(
     render_to_text,
 ):
     table = InteractiveTable(
@@ -205,7 +205,7 @@ def test_interactive_table_first_selected_row_moved_up_when_rotate_selection_tru
     diff_output(output, expected_output)
 
 
-def test_interactive_table_remove_selection(render_to_text):
+def test_remove_selection(render_to_text):
     table = InteractiveTable(title="Interactive Table", selected_row=1)
     add_columns_and_rows(table)
 
