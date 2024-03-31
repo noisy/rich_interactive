@@ -5,7 +5,13 @@
             "source.organizeImports": "explicit"
         },
         "editor.defaultFormatter": "charliermarsh.ruff",
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "editor.rulers": [
+            {
+                "color": "#555",
+                "column": 100
+            }
+        ]
     },
     "cSpell.words": [
         "docopt",

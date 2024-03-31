@@ -77,9 +77,7 @@ class InteractiveLayout(Interactive, Layout):
 
     @property
     def is_selected(self) -> bool:
-        return self.top_layout._selection_index == self.top_layout.names.index(
-            self.name
-        )
+        return self.top_layout._selection_index == self.top_layout.names.index(self.name)
 
     @property
     def renderable(self) -> RenderableType:
@@ -87,9 +85,7 @@ class InteractiveLayout(Interactive, Layout):
         result.layout = self
 
         if self.is_selected and isinstance(result, Interactive):
-            if not hasattr(result, "original_box") and not hasattr(
-                result, "original_border_style"
-            ):
+            if not (hasattr(result, "original_box") or hasattr(result, "original_border_style")):
                 result.original_box = result.box
                 result.box = self.get_selected_box()
 
@@ -167,9 +163,7 @@ if __name__ == "__main__":
     console = Console(width=60, height=15)
     print = console.print
 
-    layout = Layout(
-        selected_border_style="bold blue", selected_box=box.HEAVY_EDGE, size=15
-    )
+    layout = Layout(selected_border_style="bold blue", selected_box=box.HEAVY_EDGE, size=15)
     layout.split(
         Layout(name="header", size=5),
         Layout(name="main", size=5),

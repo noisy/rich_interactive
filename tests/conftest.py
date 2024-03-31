@@ -6,9 +6,7 @@ from rich.console import Console, RenderableType
 
 @fixture
 def render_to_text():
-    def _render_to_text(
-        renderable: RenderableType, width: int = 40, height: int = None
-    ):
+    def _render_to_text(renderable: RenderableType, width: int = 40, height: int = None):
         output_io = io.StringIO()
         console = Console(file=output_io, width=width, height=height, record=True)
 

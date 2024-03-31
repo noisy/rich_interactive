@@ -158,9 +158,7 @@ def test_first_selected_row_moved_up_does_not_move_selection(
 def test_last_selected_row_moved_down_when_rotate_selection_true_does_move_selection_to_first_row(
     render_to_text,
 ):
-    table = InteractiveTable(
-        title="Interactive Table", selected_row=2, rotate_selection=True
-    )
+    table = InteractiveTable(title="Interactive Table", selected_row=2, rotate_selection=True)
     add_columns_and_rows(table)
 
     table.move_selection_down()
@@ -183,9 +181,7 @@ def test_last_selected_row_moved_down_when_rotate_selection_true_does_move_selec
 def test_first_selected_row_moved_up_when_rotate_selection_true_does_move_selection_to_last_row(
     render_to_text,
 ):
-    table = InteractiveTable(
-        title="Interactive Table", selected_row=0, rotate_selection=True
-    )
+    table = InteractiveTable(title="Interactive Table", selected_row=0, rotate_selection=True)
     add_columns_and_rows(table)
 
     table.move_selection_up()
