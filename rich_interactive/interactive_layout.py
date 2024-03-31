@@ -160,13 +160,16 @@ class InteractiveLayout(Interactive, Layout):
 if __name__ == "__main__":
     from rich.console import Console
     from rich.text import Text
-    from rich_interactive.interactive_panel import InteractivePanel as Panel
+
     from rich_interactive.interactive_layout import InteractiveLayout as Layout
+    from rich_interactive.interactive_panel import InteractivePanel as Panel
 
     console = Console(width=60, height=15)
     print = console.print
 
-    layout = Layout()
+    layout = Layout(
+        selected_border_style="bold blue", selected_box=box.HEAVY_EDGE, size=15
+    )
     layout.split(
         Layout(name="header", size=5),
         Layout(name="main", size=5),
