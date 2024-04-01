@@ -1,3 +1,5 @@
+import pytest
+
 from rich_interactive.interactive_table import InteractiveTable
 from tests.utils import adjust_output as _
 from tests.utils import diff_output

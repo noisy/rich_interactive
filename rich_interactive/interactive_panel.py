@@ -4,4 +4,8 @@ from rich_interactive.interactive import Interactive
 
 
 class InteractivePanel(Interactive, Panel):
-    pass
+    scrollable: bool
+
+    def __init__(self, *args, scrollable: bool = True, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.scrollable = scrollable
