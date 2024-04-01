@@ -77,7 +77,12 @@ class InteractiveLayout(Interactive, Layout):
 
     @property
     def is_selected(self) -> bool:
-        return self.top_layout._selection_index == self.top_layout.names.index(self.name)
+        try:
+            index = self.top_layout.names.index(self.name)
+        except ValueError:
+            return False
+
+        return self.top_layout._selection_index == index
 
     @property
     def renderable(self) -> RenderableType:
