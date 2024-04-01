@@ -222,3 +222,44 @@ def test_remove_selection(render_to_text):
 
     output = render_to_text(table)
     diff_output(output, expected_output)
+
+
+@pytest.mark.skip(reason="Not implemented yet")
+def test_scrollable_table(render_to_text):
+    table = InteractiveTable(title="Interactive Table", scrollable=True)
+    expected_output = _("""
+
+    [3m  Scrollable Table  [0m
+    ┏━━━┳━━━━━━━━━━━━━━┓
+    ┃[1m [0m[1m#[0m[1m [0m┃[1m [0m[1mColumn 1    [0m[1m [0m┃
+    ┡━━━╇━━━━━━━━━━━━━━┩
+    │ 1 │ Row 1       ▲│
+    │ 2 │ Row 2       █│
+    │ 3 │ Row 3       ▒│
+    │ 4 │ Row 4       ▒│
+    │ 5 │ Row 5       ▼│
+    └───┴──────────────┘
+
+    ┏━━━┳━━━━━━━━━━━━━━┓
+    ┃[1m [0m[1m#[0m[1m [0m┃[1m [0m[1mColumn 1    [0m[1m [0m┃
+    ┡━━━╇━━━━━━━━━━━━━━┩
+    │ 1 │ Row 2       ▲│
+    │ 2 │ Row 3       ▒│
+    │ 3 │ Row 4       █│
+    │ 4 │ Row 5       ▒│
+    │ 5 │ Row 6       ▼│
+    └───┴──────────────┘
+
+    ┏━━━┳━━━━━━━━━━━━━━┓
+    ┃[1m [0m[1m#[0m[1m [0m┃[1m [0m[1mColumn 1    [0m[1m [0m┃
+    ┡━━━╇━━━━━━━━━━━━━━┩
+    │ 1 │ Row 3       ▲│
+    │ 2 │ Row 4       ▒│
+    │ 3 │ Row 5       ▒│
+    │ 4 │ Row 6       █│
+    │ 5 │ Row 7       ▼│
+    └───┴──────────────┘
+    """)
+
+    output = render_to_text(table)
+    diff_output(output, expected_output)
