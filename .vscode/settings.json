@@ -11,7 +11,8 @@
                 "color": "#555",
                 "column": 100
             }
-        ]
+        ],
+        // "editor.lineHeight": 12,
     },
     "cSpell.words": [
         "docopt",
