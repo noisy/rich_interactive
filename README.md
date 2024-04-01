@@ -92,3 +92,16 @@ My personal goal, is to prepare a good quality package, which would enable easy 
 ![](https://raw.githubusercontent.com/noisy/rich_interactive/main/docs/images/future_plans_live_demo_poc.gif)
 
 (Disclaimer: functionality shown in this gif is still in PoC stage, and it is not production ready yet)
+
+## Scrollable panels
+
+![](https://raw.githubusercontent.com/noisy/rich_interactive/main/docs/images/scrollable_panel.png)
+
+## Scrollable tables
+
+![](https://raw.githubusercontent.com/noisy/rich_interactive/main/docs/images/scrollable_table.png)
+
+
+# VOTE for features, which in your opinion should be implemented first!
+
+You can vote here: https://github.com/noisy/rich_interactive/discussions
